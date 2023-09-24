@@ -56,8 +56,8 @@ def telemetry_decoder(data):
     else:
         orientation='Err!'
     cpu=bitstring.BitStream(hex=data[58:60]).read('uint')*0.390625
-    obc=int(bitstring.BitStream(hex=data[60:64]).read('uintle'))-7476
-    commu=int(bitstring.BitStream(hex=data[64:68]).read('uintle'))-1505
+    obc=7476-int(bitstring.BitStream(hex=data[60:64]).read('uintle'))
+    commu=1505-int(bitstring.BitStream(hex=data[64:68]).read('uintle'))
     rssi=int(bitstring.BitStream(hex=data[68:70]).read('int'))-99
     all_packets_rx=int(bitstring.BitStream(hex=data[70:74]).read('uintle'))
     all_packets_tx=int(bitstring.BitStream(hex=data[74:78]).read('uintle'))
